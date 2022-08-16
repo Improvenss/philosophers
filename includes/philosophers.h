@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/08/16 14:56:34 by gsever           ###   ########.fr       */
+/*   Updated: 2022/08/16 17:03:06 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ typedef struct s_base	t_base;
 typedef struct s_philos
 {
 	t_base		*common;
-	pthread_t	th_id;
 	int			id;
 	int			fork_l;
 	int			fork_r;
@@ -102,6 +101,7 @@ typedef struct s_philos
 	long		last_eat_time;
 	int			full_count;
 	bool		full;
+	pthread_t	th_id;
 }		t_philos;
 
 /**
@@ -118,8 +118,6 @@ typedef struct s_philos
 typedef struct s_base
 {
 	t_philos		*philos;
-	pthread_mutex_t	*fork;
-	pthread_mutex_t	write;
 	int				philos_count;
 	int				time_to_die;
 	int				time_to_eat;
@@ -127,6 +125,8 @@ typedef struct s_base
 	int				must_eat;
 	int				start_time;
 	bool			is_running;
+	pthread_mutex_t	*fork;
+	pthread_mutex_t	write;
 }		t_base;
 
 

@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:51:39 by gsever            #+#    #+#             */
-/*   Updated: 2022/08/16 15:02:29 by gsever           ###   ########.fr       */
+/*   Updated: 2022/08/16 17:08:53 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	init_philo_thread(t_base *base)
 	while (++i < base->philos_count)
 	{
 		pthread_create(&base->philos[i].th_id, NULL,
-			lifecycle, (void *)&base->philos[i]);
+			&lifecycle, (void *)&base->philos[i]);
 	}
 	pthread_create(&lifecycle_id, NULL, &lifecycle_checker, base);
 	pthread_join(lifecycle_id, NULL);

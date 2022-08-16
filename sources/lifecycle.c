@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:35:12 by gsever            #+#    #+#             */
-/*   Updated: 2022/08/16 15:03:21 by gsever           ###   ########.fr       */
+/*   Updated: 2022/08/16 17:22:02 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,29 +56,28 @@ void	*lifecycle_checker(void *arg)
  */
 void	*lifecycle(void *arg)
 {
-	t_base	*base;
+	t_philos	*philos;
 	
-	base = (t_base *)arg;
-	base->philos->last_eat_time = get_current_time();
-	if (base->philos->id % 2 == 1)
+	philos= (t_philos *)arg;
+	philos->last_eat_time = get_current_time();
+	if (philos->id % 2 == 0)
 	{
-		philo_think(base);
-		usleep(base->time_to_eat * 0.25 * 1000);
+		philo_think(philos->common);
+		usleep(philos->common->time_to_eat * 0.25 * 1000);
 	}
-	// printf("annenaaaaa\n");
-	while (!base->philos->full)
+	while (philos->common->is_running)
 	{
-		take_forks(base);
-		philo_eat(base); /* base->philos->eat_count++ */
-		leave_forks(base);
-		philo_think(base);
-		if (base->philos->eat_count == base->must_eat)/* 7 800 200 200 [5] buradaki 5 kac kere donecegini belirtiyor. */
+		take_forks(philos->common);
+		philo_eat(philos->common); /* base->philos->eat_count++ */
+		leave_forks(philos->common);
+		philo_think(philos->common);
+		if (philos->eat_count == philos->common->must_eat)/* 7 800 200 200 [5] buradaki 5 kac kere donecegini belirtiyor. */
 		{
-			base->philos->full = true;
-			base->philos->full_count++;
+			philos->full = true;
+			philos->full_count++;
 			break ;
 		}
-		philo_sleep(base);
+		philo_sleep(philos->common);
 	}
 	return (NULL);
 }
