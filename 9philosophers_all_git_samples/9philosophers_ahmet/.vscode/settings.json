@@ -1,0 +1,7 @@
+{
+	"keyboard.dispatch": "keyCode",
+	"files.associations": {
+		"unistd.h": "c",
+		"__threading_support": "c"
+	}
+}
