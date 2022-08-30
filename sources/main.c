@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:45:18 by gsever            #+#    #+#             */
-/*   Updated: 2022/08/17 12:03:54 by gsever           ###   ########.fr       */
+/*   Updated: 2022/08/30 20:37:29 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,11 @@
  * 		ortadan aliyor catallari. Catallar kadar islem philosopher olabiliyor.
  * 		Bele bir sey.
  * 
+ * Race Condutions;
+ * 	--> read mails
+ * 	--> increment (artis)
+ * 	--> write mails
+ * 
  * 	**************BONUS PART****************
  * 	Bonus kısmı için özel kurallar şunlardır:
  * 		• Tüm çatallar masanın ortasına konur.
@@ -183,7 +188,9 @@
  * 			bir semafor ile temsil edilir.
  * 		• Her filozof bir süreç(process) olmalıdır. Ama asıl süreç
  * 			bir filozof olmamalıdır.
- * @param philosophers
+ * @fn philosophers
+ * @note --> man pthread yaz sonrasinda her pthread_func()'larin aciklamalarini
+ * 	philosophers.h'a yaz.
  */
 int	main(int argc, char *argv[])
 {
