@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/08/28 19:05:03 by gsever           ###   ########.fr       */
+/*   Updated: 2022/08/31 15:21:33 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ void	destory_threads(t_base *base);
 int		ft_perror(char *str);
 
 //get_time.c
-long	get_current_time(void);
+unsigned long long	get_current_time(void);
 
 //init_all.c
 void	init_philo_thread(t_base *base);

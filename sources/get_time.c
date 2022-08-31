@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:30:32 by gsever            #+#    #+#             */
-/*   Updated: 2022/08/17 11:55:11 by gsever           ###   ########.fr       */
+/*   Updated: 2022/08/31 14:03:49 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
  * 
  * @fn gettimeofday() : Zamani milisecond cinsinden aliyoruz.
  */
-long	get_current_time(void)
+unsigned long long	get_current_time(void)
 {
 	struct timeval	ct;
 
