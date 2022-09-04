@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_states.c                                     :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 16:13:24 by gsever            #+#    #+#             */
-/*   Updated: 2022/08/19 19:24:56 by gsever           ###   ########.fr       */
+/*   Created: 2022/08/08 13:30:32 by gsever            #+#    #+#             */
+/*   Updated: 2022/08/31 14:03:49 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @file print_states.c
- * @author Görkem SEVER (gsever)
+ * @file get_time.c
+ * @author Gorkem SEVER (gsever)
  * @brief 
  * @version 0.1
- * @date 2022-08-19
+ * @date 2022-08-08
  * 
  * @copyright Copyright (c) 2022
  * 
  */
 #include "philosophers.h"
 
-// void	print_states(uint64_t timestamp, char *str, t_base *base)
-// {
-// 	if (!base->is_running)
-// 		return ;
-// 	pthread_mutex_lock(&base->write);
-// 	printf("%llu %d %s\n", timestamp, base->philos[].id, )
-// }
+/**
+ * @brief Islem suresini hesaplamak icin kullandigimiz fonksiyon.
+ * 
+ * Current time --> ct
+ * second: 1659960007[000]
+ * micro second: [255]371
+ * last time --> 1659960007255%
+ * 
+ * @fn gettimeofday() : Zamani milisecond cinsinden aliyoruz.
+ */
+unsigned long long	get_current_time(void)
+{
+	struct timeval	ct;
+
+	gettimeofday(&ct, NULL);
+	return ((ct.tv_sec * (uint64_t)1000) + (ct.tv_usec / 1000));
+}
