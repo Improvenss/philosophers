@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/04 18:01:26 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/04 19:52:41 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,19 @@
 	pthread_mutex_destroy(),
 	pthread_mutex_lock(),
 	pthread_mutex_unlock() */
-# include <semaphore.h> /* Bonus part:
-	sem_open(),
-	sem_close(),
-	sem_post(),
-	sem_wait(),
-	sem_unlink() */
+// # include <semaphore.h> /* Bonus part:
+// 	sem_open(),
+// 	sem_close(),
+// 	sem_post(),
+// 	sem_wait(),
+// 	sem_unlink() */
+
+//	ACTIONS --> 🍽 💤 💭 🍴 💀
+# define STR_EAT "is eating"
+# define STR_SLEEP "is sleeping"
+# define STR_THINK "is thinking"
+# define STR_TOOK_FORK "has taken a fork"
+# define STR_DEAD "died"
 
 //	COLORS --> 🟥 🟩 🟦
 # define LB		"\033[0;36m"
@@ -78,6 +85,19 @@
 /* ************************************************************************** */
 
 typedef struct s_base	t_base;
+typedef struct s_philo	t_philo;
+
+/**
+ * @brief Holding number, number is actions.
+ */
+typedef enum s_state
+{
+	EAT,
+	SLEEP,
+	THINK,
+	TOOK_FORK,
+	DEAD
+}		t_state;
 
 /**
  * @brief This struct for just one philosopher.
@@ -99,7 +119,7 @@ typedef struct s_philos
 	int			fork_l;
 	int			fork_r;
 	int			eat_count;
-	long		last_eat_time;
+	uint64_t	last_eat_time;
 	bool		full;
 }		t_philos;
 
@@ -116,6 +136,7 @@ typedef struct s_philos
  */
 typedef struct s_base
 {
+	t_philos		*philos;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	write;
 	int				philos_count;
@@ -126,39 +147,38 @@ typedef struct s_base
 	int				full_count;
 	int				start_time;
 	bool			is_running;
-	t_philos		*philos;
 }		t_base;
 
 /* ************************************************************************** */
 /* FUNCTION PROTOTYPES														  */
 /* ************************************************************************** */
 
-//actions.c
+//actions.c --> OK
 void		leave_forks(t_philos *philos);
 void		take_forks(t_philos *philos);
 void		philo_sleep(t_philos *philos);
 void		philo_eat(t_philos *philos);
 void		philo_think(t_philos *philos);
 
-//check_args.c
+//check_args.c --> OK
 void		check_args_in_values(t_base *base);
 void		check_args_on_shell(int ac, char **av);
 void		check_args(int argc, char **argv);
 
-//destroy.c
+//destroy.c --> OK
 void		destroy_mutexes(t_base *base);
 void		destory_threads(t_base *base);
 
-//error.c
+//error.c --> OK
 int			ft_perror(char *str);
 
-//ft_atoi.c
+//ft_atoi.c --> OK
 int			ft_atoi(const char *nptr);
 
 //get_time.c
 uint64_t	get_current_time(void);
 
-//init_all.c
+//init_all.c --> OK
 void		init_philo_thread(t_base *base);
 void		init_mutex(t_base *base);
 void		init_philo(t_base *base);
@@ -168,7 +188,7 @@ void		init_args(int ac, char **av, t_base *base);
 void		*lifecycle_checker(void *arg);
 void		*lifecycle(void *arg);
 
-//philosophers.c
+//philosophers.c --> OK
 void		philosophers(int argc, char **argv, t_base *base);
 
 #endif
