@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/05 20:58:03 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/05 21:06:37 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,14 +148,23 @@ typedef struct s_base
 /* ************************************************************************** */
 
 //check_args_bonus.c
-void	check_args_in_values_b(t_base *base);
-void	check_args_on_shell_b(int ac, char **av);
-void	check_args_b(int argc, char **argv);
+void		check_args_in_values_b(t_base *base);
+void		check_args_on_shell_b(int ac, char **av);
+void		check_args_b(int argc, char **argv);
 
 //error_bonus.c
-int		ft_perror_b(char *str);
+int			ft_perror_b(char *str);
+
+//ft_atoi.c
+int	ft_atoi(const char *nptr);
+
+//get_time_bonus.c
+uint64_t	get_current_time_b(void);
 
 //init_all_bonus.c
-void	init_args_bonus(int ac, char **av, t_base *base);
+void		init_args_b(int ac, char **av, t_base *base);
+
+//philo_bonus.c
+void		philo_bonus(int argc, char **argv, t_base *base);
 
 #endif
