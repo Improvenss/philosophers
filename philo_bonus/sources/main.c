@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/02 13:45:18 by gsever            #+#    #+#             */
-/*   Updated: 2022/08/30 20:37:29 by gsever           ###   ########.fr       */
+/*   Created: 2022/09/05 20:45:22 by gsever            #+#    #+#             */
+/*   Updated: 2022/09/05 20:58:51 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
  * @author Görkem SEVER (gsever)
  * @brief 
  * @version 0.1
- * @date 2022-08-02
+ * @date 2022-09-05
  * 
  * @copyright Copyright (c) 2022
  * 
  */
-#include "philosophers.h"
+#include "philo_bonus.h"
+
 /**
  * @brief 
  * Bilgilendirme:
@@ -188,14 +189,13 @@
  * 			bir semafor ile temsil edilir.
  * 		• Her filozof bir süreç(process) olmalıdır. Ama asıl süreç
  * 			bir filozof olmamalıdır.
- * @fn philosophers
- * @note --> man pthread yaz sonrasinda her pthread_func()'larin aciklamalarini
- * 	philosophers.h'a yaz.
+ * @fn philo_bonus
+ * @note 
  */
 int	main(int argc, char *argv[])
 {
 	t_base	base;
 
-	philosophers(argc, argv, &base);
+	philo_bonus(argc, argv, &base);
 	exit(1);
 }

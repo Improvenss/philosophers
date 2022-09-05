@@ -6,7 +6,7 @@
 /*   By: aeser <aeser@42kocaeli.com.tr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:15:52 by aeser             #+#    #+#             */
-/*   Updated: 2022/06/07 01:31:04 by aeser            ###   ########.fr       */
+/*   Updated: 2022/09/05 19:33:25 by gsever           ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	print_state(t_philo *philo, t_state state, uint64_t timestamp)
 		STR_TOOK_FORK, STR_DEAD, NULL};
 
 	sem_wait(philo->env->sem_write);
-	printf("%lu %d %s\n", timestamp, philo->id, states[state]);
+	printf("%llu %d %s\n", timestamp, philo->id, states[state]);
 	sem_post(philo->env->sem_write);
 }

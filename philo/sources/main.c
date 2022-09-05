@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:45:18 by gsever            #+#    #+#             */
-/*   Updated: 2022/08/30 20:37:29 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/05 20:46:54 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
  * 
  */
 #include "philosophers.h"
+
 /**
  * @brief 
  * Bilgilendirme:

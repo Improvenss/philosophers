@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   check_args_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 11:24:30 by gsever            #+#    #+#             */
-/*   Updated: 2022/08/12 00:25:00 by gsever           ###   ########.fr       */
+/*   Created: 2022/09/05 20:50:03 by gsever            #+#    #+#             */
+/*   Updated: 2022/09/05 20:51:50 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file check_arg.c
- * @author Gorkem SEVER (gsever)
- * @brief 
- * @version 0.1
- * @date 2022-08-06
- * 
- * @copyright Copyright (c) 2022
- * 
- */
-#include "philosophers.h"
+#include "philo_bonus.h"
 
 /** --> OK
  * @brief Checking base struct's values.
@@ -33,13 +23,13 @@
  * @param base Base structure.
  * @fn ft_perror	: If have error writing terminal "STR" and exit(-1).
  */
-void	check_args_in_values(t_base *base)
+void	check_args_in_values_b(t_base *base)
 {
 	if (base->philos_count > 200)
-		ft_perror(RED"ERROR: Philosophers count can't more than 200!"X);
+		ft_perror_b(RED"ERROR: Philosophers count can't more than 200!"X);
 	else if (base->time_to_die < 60 || base->time_to_eat < 60
 		|| base->time_to_sleep < 60)
-		ft_perror(RED"ERROR: time_to_die/eat/sleep \
+		ft_perror_b(RED"ERROR: time_to_die/eat/sleep \
 values can't be lower than 60 ms."X);
 }
 
@@ -51,7 +41,7 @@ values can't be lower than 60 ms."X);
  * @fn ft_perror	: If have error writing terminal "STR" and exit(-1).
  * @bug Clear.
  */
-void	check_args_on_shell(int ac, char **av)
+void	check_args_on_shell_b(int ac, char **av)
 {
 	int	i;
 	int	j;
@@ -61,11 +51,11 @@ void	check_args_on_shell(int ac, char **av)
 	{
 		j = 0;
 		if (av[i][j] == '\0')
-			ft_perror(RED"ERROR: Arguman can't be NULL!"X);
+			ft_perror_b(RED"ERROR: Arguman can't be NULL!"X);
 		while (av[i][j])
 		{
 			if (!(av[i][j] >= '0' && av[i][j] <= '9'))
-				ft_perror(RED"ERROR: Arguman need just numbers."X);
+				ft_perror_b(RED"ERROR: Arguman need just numbers."X);
 			j++;
 		}
 		i++;
@@ -90,16 +80,16 @@ void	check_args_on_shell(int ac, char **av)
  * 
  * @bug Clear.
  */
-void	check_args(int argc, char **argv)
+void	check_args_b(int argc, char **argv)
 {
 	if (argc >= 5 && argc <= 6)
-		check_args_on_shell(argc, argv);
+		check_args_on_shell_b(argc, argv);
 	else
 	{
 		printf(RED"ERROR:			-> ./philosophers ");
 		printf("p_count die eat sleep [cycle count]\n"X);
 		printf(RED"ERROR: Use like this	-> ./philosophers 7 800 200 200 5\n"X);
 		printf(RED"Or			-> ./philosophers 7 800 200 200\n"X);
-		ft_perror(RED"Wrong arguments!"X);
+		ft_perror_b(RED"Wrong arguments!"X);
 	}
 }
