@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/05 23:59:09 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 11:44:50 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
 	memset()	-> Filling memory allocated with a value we want,
 	malloc()	-> Allocating memory with NULL. */
 # include <sys/types.h>
+# include <sys/wait.h> /*
+	waitpid()	-> Wait the process termination. */
 # include <sys/time.h> /*
 	gettimeofday() */
 # include <pthread.h> /*Mendatory part:
@@ -55,11 +57,11 @@
 	pthread_detach() -> Thread'la isimiz bittiginde bunu geri ,
 	pthread_join()	 -> p_create ile gorevlendigimiz thread'i calistirmaya yariyor. */
 # include <semaphore.h> /* Bonus part:
-	sem_open(),
-	sem_close(),
-	sem_post(),
-	sem_wait(),
-	sem_unlink() */
+	sem_open()	 -> Initialize and open a named semaphore.
+	sem_close()	 ->
+	sem_post()	 ->
+	sem_wait()	 ->
+	sem_unlink() ->
 
 //	ACTIONS --> 🍽 💤 💭 🍴 💀
 # define STR_EAT "is eating"
