@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:47:09 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/05 21:05:30 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 12:13:48 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
  * @param base Base structure from library.
  * 
  * @fn init_args_b()		: Argumanlari kontrol ediyoruz.
- * @fn init_philo()			: Philosopher's values entering.
+ * @fn init_philo_b()			: Philosopher's values entering.
  * @fn init_mutex()			: Creating mutex for thread's forks.
  * @fn init_philo_thread()	: Burada thread sonrasi lifecycle dongusu var.
  * @fn destroy_mutexes()	: Destorying mutexes.
@@ -44,4 +44,15 @@
 void	philo_bonus(int argc, char **argv, t_base *base)
 {
 	init_args_b(argc, argv, base);
+	init_philo_b(base);
+	init_semaphore(base);
+
+	// init_arguments(argc, argv, &env);
+	// init_semaphore(&env);
+	// init_philos(&env);
+	// init_philo_process(&env);
+	// pthread_create(&env.checker, NULL, checker_function, &env);
+	// pthread_detach(env.checker);
+	// sem_wait(env.sem_done);
+	// destroy(&env);
 }

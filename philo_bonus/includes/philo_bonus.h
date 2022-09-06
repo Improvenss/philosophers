@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 11:44:50 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 12:11:26 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@
 	pthread_join()	 -> p_create ile gorevlendigimiz thread'i calistirmaya yariyor. */
 # include <semaphore.h> /* Bonus part:
 	sem_open()	 -> Initialize and open a named semaphore.
-	sem_close()	 ->
-	sem_post()	 ->
-	sem_wait()	 ->
-	sem_unlink() ->
+	sem_close()	 -> Close a named semaphore.
+	sem_post()	 -> Unlock a semaphore.
+	sem_wait()	 -> Lock a semaphore.
+	sem_unlink() -> Remove a named semaphore. */
 
 //	ACTIONS --> 🍽 💤 💭 🍴 💀
 # define STR_EAT "is eating"
@@ -126,6 +126,8 @@ typedef struct s_philos
  * @param time_to_eat	OK: The time the philosophers take to eat.
  * @param time_to_sleep	OK: The time the philosophers take to sleep.
  * @param must_eat		OK: Cycle count --> Must eat count.
+ * @param start_time	OK: When start ./philosophers -> starting timer.
+ * @param is_running	OK: If program running(philo not die/not eat count)
  */
 typedef struct s_base
 {
@@ -140,6 +142,8 @@ typedef struct s_base
 	int			time_to_eat;
 	int			time_to_sleep;
 	int			must_eat;
+	uint64_t	start_time;
+	bool		is_running;
 }		t_base;
 
 /* ************************************************************************** */
@@ -155,7 +159,7 @@ void		check_args_b(int argc, char **argv);
 int			ft_perror_b(char *str);
 
 //ft_atoi.c
-int	ft_atoi(const char *nptr);
+int			ft_atoi(const char *nptr);
 
 //get_time_bonus.c
 uint64_t	get_current_time_b(void);

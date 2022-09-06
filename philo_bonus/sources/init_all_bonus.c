@@ -6,11 +6,49 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:49:16 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/05 21:07:06 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 12:24:28 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file init_all_bonus.c
+ * @author Gorkem SEVER (gsever)
+ * @brief 
+ * @version 0.1
+ * @date 2022-09-06
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "philo_bonus.h"
+
+void	init_semaphore(t_base *base)
+{
+	sem_open()
+}
+
+/**
+ * @brief Philosopher's values entering here.
+ * 
+ * @return void
+ * @param base* 
+ * @fn malloc()				: Bellekte yer aciyoruz.
+ * @bug Clear.
+ */
+void	init_philo_b(t_base *base)
+{
+	int	i;
+
+	base->philos = malloc(sizeof(t_philos) * base->philos_count);
+	i = -1;
+	while (++i < base->philos_count)
+	{
+		base->philos[i].base = base;
+		base->philos[i].id = i + 1;
+		base->philos[i].eat_count = 0;
+		base->philos[i].last_eat_time = 0;
+	}
+}
 
 /** -> * All OK *
  * @brief Checking args and initializing values for philos.

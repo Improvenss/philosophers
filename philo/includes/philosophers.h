@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/05 20:52:41 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 12:10:55 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct s_philos
  * @param time_to_sleep	OK: The time the philosophers take to sleep.
  * @param must_eat		OK: Cycle count --> Must eat count.
  * @param start_time	OK: When start ./philosophers -> starting timer.
+ * @param is_running	OK: If program running(philo not die/not eat count)
  */
 typedef struct s_base
 {
