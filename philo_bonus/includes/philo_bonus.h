@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/05 21:06:37 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/05 23:59:09 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 //	STANDARD LIBRARY INCLUDES
 # include <unistd.h> /*
 	write()		-> System call used to write data from the buffer,
-	fork()		-> Create thread from process. */
+	fork()		-> Create thread from process.
+	usleep()	-> Waiting program to microseconds type's. */
 # include <stdlib.h> /*
 	free()		-> Deallocatig all allocated memory,
 	exit()		-> Closing everything with atexit() and terminates program. */
@@ -52,11 +53,7 @@
 # include <pthread.h> /*Mendatory part:
 	pthread_create() -> Create process for one function,
 	pthread_detach() -> Thread'la isimiz bittiginde bunu geri ,
-	pthread_join()	 -> p_create ile gorevlendigimiz thread'i calistirmaya yariyor,
-	pthread_mutex_init(),
-	pthread_mutex_destroy(),
-	pthread_mutex_lock(),
-	pthread_mutex_unlock() */
+	pthread_join()	 -> p_create ile gorevlendigimiz thread'i calistirmaya yariyor. */
 # include <semaphore.h> /* Bonus part:
 	sem_open(),
 	sem_close(),
