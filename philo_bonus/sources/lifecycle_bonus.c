@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_bonus.c                                    :+:      :+:    :+:   */
+/*   lifecycle_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 13:25:20 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 15:32:31 by gsever           ###   ########.fr       */
+/*   Created: 2022/09/06 15:13:07 by gsever            #+#    #+#             */
+/*   Updated: 2022/09/06 18:21:02 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @file destroy_bonus.c
+ * @file lifecycle_bonus.c
  * @author Gorkem SEVER (gsever)
  * @brief 
  * @version 0.1
@@ -22,12 +22,7 @@
  */
 #include "philo_bonus.h"
 
-/**
- * @brief Destroying created semaphores.
- */
-void	destroy_semaphores_b(void)
+void	lifecycle_b(t_philos *philos)
 {
-	sem_unlink(SEM_FORK);
-	sem_unlink(SEM_WRITE);
-	sem_unlink(SEM_DIED);
+	pthread_t	checker
 }

@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:49:16 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 14:12:40 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 16:56:11 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,41 @@
 #include "philo_bonus.h"
 
 /**
+ * @brief Creating child process(philosopher) every philosophers and
+ * 	running lifecycle func().
+ * 
+ * NOT: fork() is creating child process from parent process.
+ * 	fork()'u calistirdigimiz andan itibaren child process olusuyor
+ * 	ve o child process == 0'sa lifecycle'ye girecek, sonrasinda
+ * 	while devam edecek.
+ * 
+ * 
+ * @param base Main structure for philo_pid and philos.
+ * @fn malloc()
+ */
+void	init_philo_process_b(t_base *base)
+{
+	int	i;
+
+	base->philos_pid = malloc(sizeof(int) * base->philos_count);
+	i = -1;
+	while (++i < base->philos_count)
+	{
+		base->philos_pid[i] = fork();
+		// printf("i = %d, PID -> %d\n", i, getpid());
+		if (base->philos_pid[i] == 0)
+		{
+			lifecycle_b(&base->philos[i]);
+			// printf("Entered if condition i = %d girdilten sonraki PID = %d\n", i, getpid());
+			return ;
+		}
+	}
+}
+
+/**
  * @brief 
  * 
  * chmod: dosya izinleri (yetki) değiştirme komutu
- * @link https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemo.htm
  * 	--> sem_open();
  * 	-> sem_t *sem_open(const char *name, int oflag, mode_t mode, uint value);
  * Ad, eğik çizgi ('/') karakteriyle başlamalıdır.	e.g.-> "/sem_fork"
@@ -61,6 +92,7 @@
 	3. Kisim varsa diğer kullanıcı izinleri
 
  * 
+ * @link https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemo.htm
  * @param base 
  * @fn sem_open() name, mevcut degilse olustur varsa elleme,
  * 		chmod(dosya) izinleri, semaphore adedi(qty -> quantitiy) miktari.
@@ -69,12 +101,11 @@
 void	init_semaphore_b(t_base *base)
 {
 	destroy_semaphores_b();
-	if (base->sem_forks = sem_open(SEM_FORK, O_CREAT, 644, base->philos_count)
-		== SEM_FAILED)
-		exit(1);
-	if (base->sem_write = sem_open(SEM_WRITE, O_CREAT, 644, 1) == SEM_FAILED)
-		exit(1);
-	if (base->sem_done = sem_open(SEM_DIED, O_CREAT, 644, 0) == SEM_FAILED)
+	base->sem_forks = sem_open(SEM_FORK, O_CREAT, 644, base->philos_count);
+	base->sem_write = sem_open(SEM_WRITE, O_CREAT, 644, 1);
+	base->sem_done = sem_open(SEM_DIED, O_CREAT, 644, 0);
+	if (base->sem_forks == SEM_FAILED || base->sem_forks == SEM_FAILED
+		|| base->sem_forks == SEM_FAILED)
 		exit(1);
 }
 

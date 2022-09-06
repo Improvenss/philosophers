@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 14:13:24 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 15:44:33 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ typedef struct s_base
 	sem_t		*sem_forks;
 	sem_t		*sem_write;
 	sem_t		*sem_done;
-	int			*philos_pid;
+	pid_t		*philos_pid;
 	int			philos_count;
 	int			time_to_die;
 	int			time_to_eat;
@@ -184,8 +184,13 @@ int			ft_atoi(const char *nptr);
 uint64_t	get_current_time_b(void);
 
 //init_all_bonus.c
-void		init_args_b(int ac, char **av, t_base *base);
+void		init_philo_process_b(t_base *base);
 void		init_semaphore_b(t_base *base);
+void		init_philo_b(t_base *base);
+void		init_args_b(int ac, char **av, t_base *base);
+
+//lifecycle_bonus.c
+void		lifecycle_b(t_philos *philos);
 
 //philo_bonus.c
 void		philo_bonus(int argc, char **argv, t_base *base);
