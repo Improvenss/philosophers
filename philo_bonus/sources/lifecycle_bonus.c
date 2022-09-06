@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:13:07 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 18:21:02 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 18:25:01 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@
 
 void	lifecycle_b(t_philos *philos)
 {
-	pthread_t	checker
+	(void)*philos;
 }
