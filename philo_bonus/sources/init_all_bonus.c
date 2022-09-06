@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:49:16 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 12:24:28 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 14:12:40 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,60 @@
  */
 #include "philo_bonus.h"
 
-void	init_semaphore(t_base *base)
+/**
+ * @brief 
+ * 
+ * chmod: dosya izinleri (yetki) değiştirme komutu
+ * @link https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemo.htm
+ * 	--> sem_open();
+ * 	-> sem_t *sem_open(const char *name, int oflag, mode_t mode, uint value);
+ * Ad, eğik çizgi ('/') karakteriyle başlamalıdır.	e.g.-> "/sem_fork"
+ * Başlamıyorsa, sistem adın başına bir eğik çizgi ekler. e.g.-> "sem_fork"
+
+	r = 4, w = 2, x = 1 değerini alıyor.
+	
+	rwx = okuma, yazma, çalıştırma izni oluyor.
+
+	- 1 - - - 2 - - - 3 - - - =gibi gruplandırılıyor
+		r - - = yalnız okuma izni var,
+		- w - = yalnız yazma izni var,		
+		- - x = yalnız çalıştırma izni var.
+
+			sample --> chmod -v 777 sample.*
+
+		" NOT: Baştaki (-) dosya ya da klasörün türünü gösterir "
+		So each triple encodes nicely as an octal digit.
+
+			rwx oct	  meaning --> think binary
+			--- ---	  -------
+			001 01	= execute
+			010 02	= write
+			011 03	= write & execute
+			100 04	= read
+			101 05	= read & execute
+			110 06	= read & write
+			111 07	= read & write & execute
+
+	1. Kisim varsa sahip izinleri
+	2. Kisim varsa grup izinleri
+	3. Kisim varsa diğer kullanıcı izinleri
+
+ * 
+ * @param base 
+ * @fn sem_open() name, mevcut degilse olustur varsa elleme,
+ * 		chmod(dosya) izinleri, semaphore adedi(qty -> quantitiy) miktari.
+ * @note 
+ */
+void	init_semaphore_b(t_base *base)
 {
-	sem_open()
+	destroy_semaphores_b();
+	if (base->sem_forks = sem_open(SEM_FORK, O_CREAT, 644, base->philos_count)
+		== SEM_FAILED)
+		exit(1);
+	if (base->sem_write = sem_open(SEM_WRITE, O_CREAT, 644, 1) == SEM_FAILED)
+		exit(1);
+	if (base->sem_done = sem_open(SEM_DIED, O_CREAT, 644, 0) == SEM_FAILED)
+		exit(1);
 }
 
 /**
@@ -68,9 +119,9 @@ void	init_args_b(int ac, char **av, t_base *base)
 	base->time_to_eat = ft_atoi(av[3]);
 	base->time_to_sleep = ft_atoi(av[4]);
 	base->must_eat = -1;
-	// base->is_running = true;
+	base->is_running = true;
 	if (ac == 6)
 		base->must_eat = ft_atoi(av[5]);
 	check_args_in_values_b(base);
-	// base->start_time = get_current_time_b();
+	base->start_time = get_current_time_b();
 }

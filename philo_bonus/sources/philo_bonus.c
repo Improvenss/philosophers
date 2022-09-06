@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:47:09 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 12:13:48 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 14:13:13 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	philo_bonus(int argc, char **argv, t_base *base)
 	init_philo_b(base);
 	init_semaphore(base);
 
-	// init_arguments(argc, argv, &env);
-	// init_semaphore(&env);
 	// init_philos(&env);
 	// init_philo_process(&env);
 	// pthread_create(&env.checker, NULL, checker_function, &env);

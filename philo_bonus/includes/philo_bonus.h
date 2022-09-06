@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 12:11:26 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/06 14:13:24 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,33 @@
 	pthread_join()	 -> p_create ile gorevlendigimiz thread'i calistirmaya yariyor. */
 # include <semaphore.h> /* Bonus part:
 	sem_open()	 -> Initialize and open a named semaphore.
+		sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value);
+https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemo.htm
 	sem_close()	 -> Close a named semaphore.
-	sem_post()	 -> Unlock a semaphore.
-	sem_wait()	 -> Lock a semaphore.
-	sem_unlink() -> Remove a named semaphore. */
+		int sem_close(sem_t *sem);
+https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemcl.htm
+	sem_post()	 -> Unlock a semaphore. -> V(sem)
+		int sem_post(sem_t *sem);
+https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemp.htm
+	sem_wait()	 -> Lock a semaphore. -> P(sem)
+		int sem_wait(sem_t *sem);
+https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemw.htm
+	sem_unlink() -> Remove a named semaphore.
+		int sem_unlink(const char *name);
+https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemun.htm */
 
 //	ACTIONS --> 🍽 💤 💭 🍴 💀
-# define STR_EAT "is eating"
-# define STR_SLEEP "is sleeping"
-# define STR_THINK "is thinking"
-# define STR_TOOK_FORK "has taken a fork"
-# define STR_DEAD "died"
+# define STR_EAT		"is eating"
+# define STR_SLEEP		"is sleeping"
+# define STR_THINK		"is thinking"
+# define STR_TOOK_FORK	"has taken a fork"
+# define STR_DEAD		"died"
+
+//	SEMAPHORE CREATED NAME
+# define SEM_FORK		"/sem_forks"
+# define SEM_WRITE		"/sem_write"
+# define SEM_DIED		"/sem_died"
+# define SEM_FINISH		"/sem_finish"
 
 //	COLORS --> 🟥 🟩 🟦
 # define LB		"\033[0;36m"
@@ -155,6 +171,9 @@ void		check_args_in_values_b(t_base *base);
 void		check_args_on_shell_b(int ac, char **av);
 void		check_args_b(int argc, char **argv);
 
+//destroy_bonus.c
+void		destroy_semaphores_b(void);
+
 //error_bonus.c
 int			ft_perror_b(char *str);
 
@@ -166,6 +185,7 @@ uint64_t	get_current_time_b(void);
 
 //init_all_bonus.c
 void		init_args_b(int ac, char **av, t_base *base);
+void		init_semaphore_b(t_base *base);
 
 //philo_bonus.c
 void		philo_bonus(int argc, char **argv, t_base *base);
