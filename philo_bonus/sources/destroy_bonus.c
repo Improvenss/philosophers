@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:25:20 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 15:32:31 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/07 18:37:52 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,43 @@
 
 /**
  * @brief Destroying created semaphores.
+ * 
+ * @fn sem_unlink()
  */
 void	destroy_semaphores_b(void)
 {
 	sem_unlink(SEM_FORK);
 	sem_unlink(SEM_WRITE);
 	sem_unlink(SEM_DIED);
+}
+
+/**
+ * @brief Destroying fork()'ed, created PID's.
+ * 
+ * @param base 
+ * @fn kill()
+ */
+void	destroy_pids_b(t_base *base)
+{
+	int	i;
+
+	i = -1;
+	while (++i < base->philos_count)
+		kill(base->philos_pid[i], SIGKILL);
+}
+
+/**
+ * @brief Destroying all PIDs, semaphores and freeing.
+ * 
+ * @param base 
+ * @fn destroy_pids_b()
+ * @fn destroy_semaphores_b()
+ * @fn free()
+ */
+void	destroy_all_b(t_base *base)
+{
+	destroy_pids_b(base);
+	destroy_semaphores_b();
+	free(base->philos);
+	free(base->philos_pid);
 }

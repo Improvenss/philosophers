@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:47:09 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 16:48:19 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/07 20:00:33 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,18 @@
  * @fn init_args_b()			: Argumanlari kontrol ediyoruz.
  * @fn init_philo_b()			: Philosopher's values entering.
  * @fn init_semaphore_b()		: Burada sem_open()'la semaphore olusturuyoruz.
- * @fn init_philo_process_b()	: 
- * @fn destroy_mutexes()		: Destorying mutexes.
- * @fn destory_threads()		: Destroying threads.
+ * @fn init_philo_process_b()	: Her philosopher icin olusturdugumuz sem'leri
+ * 	burada lifecycle() yonlendirerek processlerle lifecycle dongumuzu
+ * 	baslatmis oluyoruz.
+ * @fn sem_wait()				: Lifecycle dongumuz tamamen bittikten sonra
+ * 	sem_post(base->sem_done) ile bitirme semaphore'nin bittigini soyluyoruz,
+ * 	sonrasinda program buradan calismaya devam ediyor ve destory_all_b()
+ * 	islemlerini yapiyoruz ve programimiz tamamen sonlaniyor. Bunu yapmazsak;
+ * 	MAIN process kendi islemini bitirdikten sonra destory asamasina gelip,
+ * 	program daha calismasini bitirmeden sonlaniyor.
  * 
  * @bug Clear
- * @note --> init_sem_b() yapilacak burada kaldin, init_args_b() OK.
+ * @note 5 kere yemek yedikten sonra program sonlanmiyor ve leaks yiyior.
  */
 void	philo_bonus(int argc, char **argv, t_base *base)
 {
@@ -48,9 +54,8 @@ void	philo_bonus(int argc, char **argv, t_base *base)
 	init_philo_b(base);
 	init_semaphore_b(base);
 	init_philo_process_b(base);
-	while (1);
-	// pthread_create(&env.checker, NULL, checker_function, &env);
-	// pthread_detach(env.checker);
-	// sem_wait(env.sem_done);
-	// destroy(&env);
+	pthread_create(&base->checker, NULL, control_philos_b, &base);
+	pthread_detach(base->checker);
+	sem_wait(base->sem_done);
+	destroy_all_b(base);
 }

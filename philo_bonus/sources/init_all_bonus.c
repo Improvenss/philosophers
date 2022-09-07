@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:49:16 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 18:26:02 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/07 17:39:52 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	init_philo_process_b(t_base *base)
 	while (++i < base->philos_count)
 	{
 		base->philos_pid[i] = fork();
-		printf("i = %d, PID -> %d\n", i, getpid());
+		// printf("i = %d, PID -> %d\n", i, getpid());
 		if (base->philos_pid[i] == 0)
 		{
 			lifecycle_b(&base->philos[i]);
-			printf("Entered if condition i = %d girdilten sonraki PID = %d\n", i, getpid());
+			// printf("Entered if condition i = %d girdilten sonraki PID = %d\n", i, getpid());
 			return ;
 		}
 	}

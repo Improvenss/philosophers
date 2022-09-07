@@ -6,18 +6,18 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/06 15:44:33 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/07 19:56:16 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/** @file philosophers.h
+/** @file philo_bonus.h
  * @brief Library for 'philosophers' project.
  * @author Görkem SEVER (gsever)
  * @bug Not know bugs.
  */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#ifndef PHILO_BONUS_H
+# define PHILO_BONUS_H
 
 //	STANDARD LIBRARY INCLUDES
 # include <unistd.h> /*
@@ -49,13 +49,16 @@
 	malloc()	-> Allocating memory with NULL. */
 # include <sys/types.h>
 # include <sys/wait.h> /*
-	waitpid()	-> Wait the process termination. */
+	waitpid()	-> Wait the process termination.
+		pid_t waitpid(pid_t pid, int *stat_loc, int options);
+https://www.ibm.com/docs/en/i/7.4?topic=ssw_ibm_i_74/apis/waitpid.htm */
 # include <sys/time.h> /*
 	gettimeofday() */
 # include <pthread.h> /*Mendatory part:
 	pthread_create() -> Create process for one function,
 	pthread_detach() -> Thread'la isimiz bittiginde bunu geri ,
-	pthread_join()	 -> p_create ile gorevlendigimiz thread'i calistirmaya yariyor. */
+	pthread_join()	 -> p_create ile gorevlendigimiz thread'i calistirmaya yariyor.
+	 */
 # include <semaphore.h> /* Bonus part:
 	sem_open()	 -> Initialize and open a named semaphore.
 		sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value);
@@ -166,6 +169,13 @@ typedef struct s_base
 /* FUNCTION PROTOTYPES														  */
 /* ************************************************************************** */
 
+//actions_bonus.c
+void		leave_forks_b(t_philos *philos);
+void		take_forks_b(t_philos *philos);
+void		philo_sleep_b(t_philos *philos);
+void		philo_eat_b(t_philos *philos);
+void		philo_think_b(t_philos *philos);
+
 //check_args_bonus.c
 void		check_args_in_values_b(t_base *base);
 void		check_args_on_shell_b(int ac, char **av);
@@ -173,6 +183,8 @@ void		check_args_b(int argc, char **argv);
 
 //destroy_bonus.c
 void		destroy_semaphores_b(void);
+void		destroy_pids_b(t_base *base);
+void		destroy_all_b(t_base *base);
 
 //error_bonus.c
 int			ft_perror_b(char *str);
@@ -190,9 +202,14 @@ void		init_philo_b(t_base *base);
 void		init_args_b(int ac, char **av, t_base *base);
 
 //lifecycle_bonus.c
+void		*control_philos_b(void *arg);
+void		*lifecycle_checker_b(void *arg);
 void		lifecycle_b(t_philos *philos);
 
 //philo_bonus.c
 void		philo_bonus(int argc, char **argv, t_base *base);
+
+//write_command_bonus.c
+void		write_command_b(uint64_t time, t_philos *philos, t_state state);
 
 #endif
