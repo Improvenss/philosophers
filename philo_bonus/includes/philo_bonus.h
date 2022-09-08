@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/08 18:48:44 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:43:33 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemw.htm
 https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemun.htm */
 
 //	ACTIONS --> 🍽 💤 💭 🍴 💀
-# define STR_EAT		"is eating"
-# define STR_SLEEP		"is sleeping"
-# define STR_THINK		"is thinking"
+# define STR_EAT		GREEN"is eating"X
+# define STR_SLEEP		BLUE"is sleeping"X
+# define STR_THINK		YELLOW"is thinking"X
 # define STR_TOOK_FORK	"has taken a fork"
-# define STR_DEAD		"died"
+# define STR_DEAD		RED"died"X
 
 //	SEMAPHORE CREATED NAME
 # define SEM_FORK		"/sem_forks"
@@ -90,13 +90,21 @@ https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemun.htm */
 # define SEM_FINISH		"/sem_finish"
 
 //	COLORS --> 🟥 🟩 🟦
-# define LB		"\033[0;36m"
-# define BLUE	"\033[0;34m"
-# define YELLOW	"\033[0;33m"
-# define GREEN	"\033[0;32m"
-# define RED	"\033[0;31m"
-# define RESET	"\033[0m"
-# define X		"\033[m"
+# define CYAN		"\033[0;36m"
+# define BLUE		"\033[0;34m"
+# define YELLOW		"\033[0;33m"
+# define GREEN		"\033[0;32m"
+# define RED		"\033[0;31m"
+# define RESET		"\033[0m"
+# define X			"\033[m"
+
+//	COLORS BOLD--> B🟥 B🟩 B🟦
+# define B_CYAN		"\033[1;36m"
+# define B_BLUE		"\033[1;34m"
+# define B_YELLOW	"\033[1;33m"
+# define B_GREEN	"\033[1;32m"
+# define B_RED		"\033[1;31m"
+# define B_RESET	"\033[1m"
 
 /* ************************************************************************** */
 /* STRUCT DEFINES AREA													  	  */
@@ -193,7 +201,7 @@ int			ft_perror_b(char *str);
 int			ft_atoi(const char *nptr);
 
 //get_time_bonus.c
-uint64_t	get_current_time_b(void);
+uint64_t	get_current_time_b(t_base *base);
 
 //init_all_bonus.c
 void		init_philo_process_b(t_base *base);

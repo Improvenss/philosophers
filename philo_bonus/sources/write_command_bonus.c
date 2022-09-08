@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:24:00 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/07 17:38:55 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:31:41 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	write_command_b(uint64_t time, t_philos *philos, t_state state)
 	if (!philos->base->is_running)
 		return ;
 	sem_wait(philos->base->sem_write);
-	printf("%llu %d %s\n", time, philos->id, actions[state]);
+	printf("%llu	%d	%s\n", time, philos->id, actions[state]);
 	sem_post(philos->base->sem_write);
 }

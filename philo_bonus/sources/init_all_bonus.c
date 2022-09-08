@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:49:16 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/08 18:45:50 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:27:17 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,5 @@ void	init_args_b(int ac, char **av, t_base *base)
 	if (ac == 6)
 		base->must_eat = ft_atoi(av[5]);
 	check_args_in_values_b(base);
-	base->start_time = get_current_time_b();
+	base->start_time = get_current_time_b(base);
 }

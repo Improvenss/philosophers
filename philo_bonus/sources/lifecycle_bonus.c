@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:13:07 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/08 18:49:49 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:31:16 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void	*lifecycle_checker_b(void *arg)
 	{
 		if (philos->base->must_eat == philos->eat_count)
 			break ;
-		timestamp = get_current_time_b();
+		timestamp = get_current_time_b(philos->base);
 		if ((int)(timestamp - philos->last_eat_time) > philos->base->time_to_die)
 		{
-			write_command_b(get_current_time_b(), philos, DEAD);
+			write_command_b(timestamp, philos, DEAD);
 			sem_post(philos->base->sem_done);
 			break ;
 		}
@@ -75,19 +75,19 @@ void	lifecycle_b(t_philos *philos)
 	if (philos->id % 2 == 0)
 	{
 		philo_think_b(philos);
-		// usleep(philos->base->time_to_eat * 0.25 * 1000);
-		usleep(1000);
+		usleep(philos->base->time_to_die * 0.25 * 1000);
+		// usleep(1000);
 	}
-	philos->last_eat_time = get_current_time_b();
+	philos->last_eat_time = get_current_time_b(philos->base);
 	pthread_create(&th_checker, NULL, &lifecycle_checker_b, philos);
 	pthread_detach(th_checker);
 	while (philos->base->is_running)
 	{
 		philo_eat_b(philos);
+		philo_sleep_b(philos);
 		philo_think_b(philos);
 		if (philos->base->must_eat == philos->eat_count)
 			exit(EXIT_SUCCESS);
-		philo_sleep_b(philos);
 	}
 	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 18:11:11 by mbari             #+#    #+#             */
-/*   Updated: 2021/07/16 09:02:15 by mbari            ###   ########.fr       */
+/*   Updated: 2022/09/08 19:20:21 by gsever           ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,9 @@ void	ft_create_process(t_simulation *simulation, t_philo *philo)
 
 int	main(int ac, char **av)
 {
-	int				i;
 	t_simulation	simulation;
 	t_philo			*philo;
 
-	i = 0;
 	if (ac == 5 || ac == 6)
 	{
 		if (ft_parsing(av, &simulation))

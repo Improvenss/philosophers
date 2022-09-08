@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:14:48 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/08 18:15:14 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:30:49 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ void	leave_forks_b(t_philos *philos)
 void	take_forks_b(t_philos *philos)
 {
 	sem_wait(philos->base->sem_forks);
-	write_command_b(get_current_time_b(), philos, TOOK_FORK);
+	write_command_b(get_current_time_b(philos->base), philos, TOOK_FORK);
 	sem_wait(philos->base->sem_forks);
-	write_command_b(get_current_time_b(), philos, TOOK_FORK);
+	write_command_b(get_current_time_b(philos->base), philos, TOOK_FORK);
 }
 
 void	philo_sleep_b(t_philos *philos)
 {
-	write_command_b(get_current_time_b(), philos, SLEEP);
+	write_command_b(get_current_time_b(philos->base), philos, SLEEP);
 	usleep(philos->base->time_to_sleep * 1000);
 }
 
 void	philo_eat_b(t_philos *philos)
 {
 	take_forks_b(philos);
-	write_command_b(get_current_time_b(), philos, EAT);
-	philos->last_eat_time = get_current_time_b();
+	write_command_b(get_current_time_b(philos->base), philos, EAT);
+	philos->last_eat_time = get_current_time_b(philos->base);
 	philos->eat_count++;
 	usleep(philos->base->time_to_eat * 1000);
 	leave_forks_b(philos);
@@ -44,5 +44,5 @@ void	philo_eat_b(t_philos *philos)
 
 void	philo_think_b(t_philos *philos)
 {
-	write_command_b(get_current_time_b(), philos, THINK);
+	write_command_b(get_current_time_b(philos->base), philos, THINK);
 }
