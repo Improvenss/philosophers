@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 21:01:25 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/08 19:26:08 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:56:03 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@
 uint64_t	get_current_time_b(t_base *base)
 {
 	struct timeval	ct;
-	uint64_t	past_time;
+	uint64_t		past_time;
 
 	gettimeofday(&ct, NULL);
-	past_time = (ct.tv_sec * (uint64_t)1000) + (ct.tv_usec / 1000) - base->start_time;
+	past_time = (ct.tv_sec * (uint64_t)1000)
+		+ (ct.tv_usec / 1000) - base->start_time;
 	return (past_time);
 }

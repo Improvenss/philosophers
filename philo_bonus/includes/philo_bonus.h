@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/08 19:43:33 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:53:57 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemw.htm
 https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemun.htm */
 
 //	ACTIONS --> 🍽 💤 💭 🍴 💀
-# define STR_EAT		GREEN"is eating"X
-# define STR_SLEEP		BLUE"is sleeping"X
-# define STR_THINK		YELLOW"is thinking"X
+# define STR_EAT		"\033[0;32mis eating\033[m"
+# define STR_SLEEP		"\033[0;34mis sleeping\033[m"
+# define STR_THINK		"\033[0;33mis thinking\033[m"
 # define STR_TOOK_FORK	"has taken a fork"
-# define STR_DEAD		RED"died"X
+# define STR_DEAD		"\033[0;31mdied\033[m"
 
 //	SEMAPHORE CREATED NAME
 # define SEM_FORK		"/sem_forks"
