@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:13:07 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/07 19:59:42 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/08 18:49:49 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*control_philos_b(void *arg)
 	t_base	*base;
 	int		i;
 
-	base = (t_base *)arg;
+	base = arg;
 	i = -1;
 	while (++i < base->philos_count)
 		waitpid(-1, NULL, 0);
@@ -54,7 +54,7 @@ void	*lifecycle_checker_b(void *arg)
 		timestamp = get_current_time_b();
 		if ((int)(timestamp - philos->last_eat_time) > philos->base->time_to_die)
 		{
-			write_command_b(timestamp, philos, DEAD);
+			write_command_b(get_current_time_b(), philos, DEAD);
 			sem_post(philos->base->sem_done);
 			break ;
 		}
@@ -75,8 +75,8 @@ void	lifecycle_b(t_philos *philos)
 	if (philos->id % 2 == 0)
 	{
 		philo_think_b(philos);
-		usleep(philos->base->time_to_eat * 0.25 * 1000);
-		// usleep(1000);
+		// usleep(philos->base->time_to_eat * 0.25 * 1000);
+		usleep(1000);
 	}
 	philos->last_eat_time = get_current_time_b();
 	pthread_create(&th_checker, NULL, &lifecycle_checker_b, philos);

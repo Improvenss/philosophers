@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:47:09 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/07 20:00:33 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/08 18:52:40 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
  * 	program daha calismasini bitirmeden sonlaniyor.
  * 
  * @bug Clear
- * @note 5 kere yemek yedikten sonra program sonlanmiyor ve leaks yiyior.
+ * @note Leaks yiyior.
  */
 void	philo_bonus(int argc, char **argv, t_base *base)
 {
@@ -54,7 +54,7 @@ void	philo_bonus(int argc, char **argv, t_base *base)
 	init_philo_b(base);
 	init_semaphore_b(base);
 	init_philo_process_b(base);
-	pthread_create(&base->checker, NULL, control_philos_b, &base);
+	pthread_create(&base->checker, NULL, &control_philos_b, base);
 	pthread_detach(base->checker);
 	sem_wait(base->sem_done);
 	destroy_all_b(base);

@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:14:48 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/07 18:10:57 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/08 18:15:14 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	philo_eat_b(t_philos *philos)
 	write_command_b(get_current_time_b(), philos, EAT);
 	philos->last_eat_time = get_current_time_b();
 	philos->eat_count++;
-	leave_forks_b(philos);
 	usleep(philos->base->time_to_eat * 1000);
+	leave_forks_b(philos);
 }
 
 void	philo_think_b(t_philos *philos)
