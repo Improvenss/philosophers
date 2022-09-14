@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/14 09:06:45 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/07 16:58:03 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ typedef struct s_base
 	int				time_to_sleep;
 	int				must_eat;
 	int				full_count;
-	uint64_t		start_time;
+	int				start_time;
 	bool			is_running;
 }		t_base;
 
@@ -177,7 +177,7 @@ int			ft_perror(char *str);
 int			ft_atoi(const char *nptr);
 
 //get_time.c
-uint64_t	get_current_time(t_base *base);
+uint64_t	get_current_time(void);
 
 //init_all.c --> OK
 void		init_philo_thread(t_base *base);
@@ -191,8 +191,5 @@ void		*lifecycle(void *arg);
 
 //philosophers.c --> OK
 void		philosophers(int argc, char **argv, t_base *base);
-
-//write_command.c
-void		write_actions(uint64_t time, t_philos *philos, t_state state);
 
 #endif

@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_command.c                                    :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 19:39:07 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/14 09:24:26 by gsever           ###   ########.fr       */
+/*   Created: 2022/08/06 12:10:43 by gsever            #+#    #+#             */
+/*   Updated: 2022/08/17 11:53:16 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file error.c
+ * @author Gorkem SEVER (gsever)
+ * @brief Error page here.
+ * @version 0.1
+ * @date 2022-08-06
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "philosophers.h"
 
-void	write_actions(uint64_t time, t_philos *philos, t_state state)
+/**
+ * @brief Write "string" terminal
+ * @return 1
+ * @bug Clear.
+ */
+int	ft_perror(char *str)
 {
-	const char	*actions[6] = {GREEN STR_EAT X, BLUE STR_SLEEP X,
-		YELLOW STR_THINK X, STR_TOOK_FORK, RED STR_DEAD X, NULL};
-
-	if (!philos->common->is_running)
-		return ;
-	pthread_mutex_lock(&philos->common->write);
-	printf("%llu	%d	%s\n", time, philos->id, actions[state]);
-	pthread_mutex_unlock(&philos->common->write);
+	printf("%s\n", str);
+	exit(-1);
+	return (1);
 }

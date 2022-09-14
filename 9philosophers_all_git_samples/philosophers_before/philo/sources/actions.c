@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 05:32:09 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/14 09:31:57 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/04 19:52:34 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,14 @@ void	leave_forks(t_philos *philos)
  */
 void	take_forks(t_philos *philos)
 {
-	// uint64_t	real_time;
+	uint64_t	real_time;
 
 	pthread_mutex_lock(&philos->common->fork[philos->fork_l]);
-	// real_time = get_current_time(philos->common) - philos->common->start_time;
-	// printf("%llu %d %s\n", real_time, philos->id, "has taken a fork");
-	write_actions(get_current_time(philos->common), philos, TOOK_FORK);
+	real_time = get_current_time() - philos->common->start_time;
+	printf("%llu %d %s\n", real_time, philos->id, "has taken a fork");
 	pthread_mutex_lock(&philos->common->fork[philos->fork_r]);
-	// real_time = get_current_time(philos->common) - philos->common->start_time;
-	// printf("%llu %d %s\n", real_time, philos->id, "has taken a fork");
-	write_actions(get_current_time(philos->common), philos, TOOK_FORK);
+	real_time = get_current_time() - philos->common->start_time;
+	printf("%llu %d %s\n", real_time, philos->id, "has taken a fork");
 }
 
 /**
@@ -73,11 +71,10 @@ void	take_forks(t_philos *philos)
  */
 void	philo_sleep(t_philos *philos)
 {
-	// uint64_t	real_time;
+	uint64_t	real_time;
 
-	// real_time = get_current_time(philos->common);
-	// printf(BLUE"%llu %d %s\n"X, real_time, philos->id, "is sleeping");
-	write_actions(get_current_time(philos->common), philos, SLEEP);
+	real_time = get_current_time();
+	printf(BLUE"%llu %d %s\n"X, real_time, philos->id, "is sleeping");
 	usleep(philos->common->time_to_sleep * 1000);
 }
 
@@ -97,9 +94,8 @@ void	philo_eat(t_philos *philos)
 	uint64_t	real_time;
 
 	take_forks(philos);
-	real_time = get_current_time(philos->common);
-	// printf(GREEN"%llu %d %s\n"X, real_time, philos->id, "is eating");
-	write_actions(real_time, philos, EAT);
+	real_time = get_current_time();
+	printf(GREEN"%llu %d %s\n"X, real_time, philos->id, "is eating");
 	philos->last_eat_time = real_time;
 	philos->eat_count++;
 	usleep(philos->common->time_to_eat * 1000);
@@ -121,7 +117,6 @@ void	philo_think(t_philos *philos)
 {
 	uint64_t	real_time;
 
-	real_time = get_current_time(philos->common);
-	// printf(YELLOW"%llu %d %s\n"X, real_time, philos->id, "is thinking");
-	write_actions(get_current_time(philos->common), philos, THINK);
+	real_time = get_current_time();
+	printf(YELLOW"%llu %d %s\n"X, real_time, philos->id, "is thinking");
 }

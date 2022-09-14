@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:30:32 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/14 09:06:30 by gsever           ###   ########.fr       */
+/*   Updated: 2022/08/31 14:03:49 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,10 @@
  * 
  * @fn gettimeofday() : Zamani milisecond cinsinden aliyoruz.
  */
-unsigned long long	get_current_time(t_base *base)
+unsigned long long	get_current_time(void)
 {
-	// struct timeval	ct;
-
-	// gettimeofday(&ct, NULL);
-	// return ((ct.tv_sec * (uint64_t)1000) + (ct.tv_usec / 1000));
 	struct timeval	ct;
-	uint64_t		past_time;
 
 	gettimeofday(&ct, NULL);
-	past_time = (ct.tv_sec * (uint64_t)1000)
-		+ (ct.tv_usec / 1000) - base->start_time;
-	return (past_time);
+	return ((ct.tv_sec * (uint64_t)1000) + (ct.tv_usec / 1000));
 }
