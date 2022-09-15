@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:35:12 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/15 17:09:53 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/14 09:40:54 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	*lifecycle_checker(void *arg)
 		if (!base->philos[i].full && ((int)(timestamp
 				- base->philos[i].last_eat_time) > base->time_to_die))
 		{
+			// printf("%llu %d %s\n", timestamp, base->philos[i].id, "died");
 			write_actions(timestamp, &base->philos[i], DEAD);
 			base->is_running = false;
 			break ;

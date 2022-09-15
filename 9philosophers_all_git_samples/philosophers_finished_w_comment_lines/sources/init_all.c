@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 14:51:39 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/15 17:04:05 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/14 09:07:55 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	init_philo_thread(t_base *base)
 	}
 	pthread_create(&lifecycle_id, NULL, &lifecycle_checker, base);
 	pthread_join(lifecycle_id, NULL);
-	pthread_detach(lifecycle_id);
 }
 
 /**

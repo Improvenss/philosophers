@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 20:47:09 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/08 19:55:17 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/15 15:53:52 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@
  */
 void	philo_bonus(int argc, char **argv, t_base *base)
 {
-	printf(B_CYAN"MAIN PID = %d\n"X, getpid());
 	base->start_time = 0;
 	init_args_b(argc, argv, base);
 	init_philo_b(base);

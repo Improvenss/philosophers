@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_time.c                                         :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/08 13:30:32 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/15 17:15:35 by gsever           ###   ########.fr       */
+/*   Created: 2022/08/06 12:10:43 by gsever            #+#    #+#             */
+/*   Updated: 2022/08/17 11:53:16 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @file get_time.c
+ * @file error.c
  * @author Gorkem SEVER (gsever)
- * @brief 
+ * @brief Error page here.
  * @version 0.1
- * @date 2022-08-08
+ * @date 2022-08-06
  * 
  * @copyright Copyright (c) 2022
  * 
@@ -23,22 +23,13 @@
 #include "philosophers.h"
 
 /**
- * @brief Islem suresini hesaplamak icin kullandigimiz fonksiyon.
- * 
- * Current time --> ct
- * second: 1659960007[000]
- * micro second: [255]371
- * last time --> 1659960007255%
- * 
- * @fn gettimeofday() : Zamani milisecond cinsinden aliyoruz.
+ * @brief Write "string" terminal
+ * @return 1
+ * @bug Clear.
  */
-unsigned long long	get_current_time(t_base *base)
+int	ft_perror(char *str)
 {
-	struct timeval	ct;
-	uint64_t		past_time;
-
-	gettimeofday(&ct, NULL);
-	past_time = (ct.tv_sec * (uint64_t)1000)
-		+ (ct.tv_usec / 1000) - base->start_time;
-	return (past_time);
+	printf("%s\n", str);
+	exit(-1);
+	return (1);
 }

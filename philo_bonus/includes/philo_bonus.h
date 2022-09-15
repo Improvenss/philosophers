@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/08 19:53:57 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/15 17:19:29 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,26 @@ https://www.ibm.com/docs/en/i/7.4?topic=ssw_ibm_i_74/apis/waitpid.htm */
 # include <sys/time.h> /*
 	gettimeofday() */
 # include <pthread.h> /*Mendatory part:
-	pthread_create() -> Create process for one function,
-	pthread_detach() -> Thread'la isimiz bittiginde bunu geri ,
-	pthread_join()	 -> p_create ile gorevlendigimiz thread'i calistirmaya yariyor.
+	pthread_create() -> Create process for one function
+		int pthread_create(pthread_t *thread, pthread_attr_t *attr,
+			void *(*start_routine) (void *arg), void *arg);
+https://www.ibm.com/docs/en/zos/2.3.0?topic=functions-pthread-create
+-create-thread
+	pthread_detach() -> Çağıran iş parçacığı, hedef is parcaciginin
+		isi bitmeden onu bitirir ve bellekten freelenir.
+		int pthread_detach(pthread_t *thread);
+https://www.ibm.com/docs/en/zos/2.4.0?topic=functions-pthread-detach
+-detach-thread
+	pthread_join()	 -> Çağıran iş parçacığı, hedef is parcaciginin
+		isini bitirmesini bekler ve bellekten freelenir.
+		int pthread_join(pthread_t thread, void **status);
+https://www.ibm.com/docs/en/zos/2.4.0?topic=functions-pthread-join
+-wait-thread-end#ptjoin
 	 */
 # include <semaphore.h> /* Bonus part:
 	sem_open()	 -> Initialize and open a named semaphore.
-		sem_t *sem_open(const char *name, int oflag, mode_t mode, unsigned int value);
+		sem_t *sem_open(const char *name, int oflag,
+			mode_t mode, unsigned int value);
 https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemo.htm
 	sem_close()	 -> Close a named semaphore.
 		int sem_close(sem_t *sem);
@@ -127,7 +140,7 @@ typedef enum s_state
 
 /**
  * @brief This struct for just one philosopher.
- * @param base*		OK:	Main event BRUH.
+ * @param base*			OK:	Main event BRUH.
  * @param id			OK:	Philosopher's turn id.
  * @param eat_count		OK:	How many times eated.
  * @param last_eat_time	OK:	Elapsed time since the philosopher last ate.
@@ -143,11 +156,11 @@ typedef struct s_philos
 /**
  * @brief This struct for main cycle.
  * @param philos*		OK:	Creates a Philosopher.
- * @param checker			Checker's thread.
- * @param sem_forks*		The philo's count forks.
- * @param sem_write*		Write command's semaphore.
- * @param sem_done*			If finished eating or died philosopher.
- * @param philos_pid*		Holding in array philosopher's pid number.
+ * @param checker		OK: Checker's thread.
+ * @param sem_forks*	OK: The philo's count forks.
+ * @param sem_write*	OK: Write command's semaphore.
+ * @param sem_done*		OK: If finished eating or died philosopher.
+ * @param philos_pid*	OK: Holding in array philosopher's pid number.
  * @param philos_count	OK: The amount of philosophers we have.
  * @param time_to_die	OK: The time the philosophers take to die.
  * @param time_to_eat	OK: The time the philosophers take to eat.
