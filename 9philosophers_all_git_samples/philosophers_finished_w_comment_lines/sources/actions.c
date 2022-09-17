@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 05:32:09 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/14 09:31:57 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/18 02:24:33 by gsever           ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,5 @@ void	philo_think(t_philos *philos)
 
 	real_time = get_current_time(philos->common);
 	// printf(YELLOW"%llu %d %s\n"X, real_time, philos->id, "is thinking");
-	write_actions(get_current_time(philos->common), philos, THINK);
+	write_actions(real_time, philos, THINK);
 }
