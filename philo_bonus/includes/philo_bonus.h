@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:33:22 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/15 17:19:29 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/17 16:46:20 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemo.htm
 	sem_close()	 -> Close a named semaphore.
 		int sem_close(sem_t *sem);
 https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemcl.htm
-	sem_post()	 -> Unlock a semaphore. -> V(sem)
+	sem_post()	 -> Unlock a semaphore. -> V(sem) -> Logout
 		int sem_post(sem_t *sem);
 https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemp.htm
-	sem_wait()	 -> Lock a semaphore. -> P(sem)
+	sem_wait()	 -> Lock a semaphore. -> P(sem) -> Login
 		int sem_wait(sem_t *sem);
 https://www.ibm.com/docs/en/i/7.1?topic=ssw_ibm_i_71/apis/ipcsemw.htm
 	sem_unlink() -> Remove a named semaphore.

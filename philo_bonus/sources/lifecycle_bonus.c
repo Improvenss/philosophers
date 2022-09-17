@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:13:07 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/08 19:54:43 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/17 16:33:32 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*lifecycle_checker_b(void *arg)
 			sem_post(philos->base->sem_done);
 			break ;
 		}
-		usleep(1000);
+		usleep(10);
 	}
 	return (NULL);
 }
