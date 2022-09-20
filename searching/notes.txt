@@ -14,7 +14,7 @@ Data races: (Veri Yarislari)(Is Parcacigi)
 	baska bir Data race(is parcacigi) ona yazarken bir Race condition(veri 
 	yarisi) meydana gelir.
 		Data races' ten kacinmanin tek yolu, is parcaciklari arasında paylaşılan tüm değişken
-	verilere erisimi senkronize etmektir.
+	verilere erisimi senkronize etmektir. Bu erisimi senkronize etmeye yarayan da 'mutex'lerdir.
 
 -----------------------------------------!
 --> Özeti -> Olayın zamanlaması/sirasi kodla cakisirsa -> Race Condition(Yaris Koşulları).
@@ -23,6 +23,17 @@ Data races: (Veri Yarislari)(Is Parcacigi)
 EXC_BAD_ACCES error:
 	Bozuk belleğe erişmeye calisan 
 -----------------------------------------
+pthread_exit(): Cagirildiginda islemini erken sonlandirmak icin acilan thread sonlandirilir.
+pthread_join(): Cagirildiginda donus degerini(islemini) tamamen bitirmesini bekledikten sonra
+	acilan thread sonlandirilir.
+pthread_detach(): Thread'in kendisinden veya başka thread'dan çağrılabilir ve
+	iş parçacığının "dönüş değerini" veya "bitmesini bekleme yeteneğini istemediğinizi" belirtir.
+	Bu yararlıdır çünkü aksi takdirde, siz çağırana kadar pthread_join değer pthread_t geçerli
+	kalır ve kaynakları tüketir - en azından, dönüş değerini depolamak ve olası bir değerini
+	bağlamak için kaynaklar pthread_t. kullanıyorsanız pthread_detach, normalde onu yeni iş
+	parçacığından veya yeni iş parçacığı oluşturulur oluşturmaz ( 'den hemen sonra pthread_create)
+	oluşturan iş parçacığından çağırırsınız.
+
 
 //////	NOTES	\\\\\
 export MallocStackLogging=1 --> ./prog 3 yazinca 3 tane leaks vardi onları gösteriyor.c

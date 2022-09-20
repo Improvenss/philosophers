@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:13:07 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/17 16:33:32 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/20 13:32:52 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@
  */
 #include "philo_bonus.h"
 
+/**
+ * @brief 
+ * 
+ * @param arg 
+ * @fn waitpid()	fork()'la olusturdugumiz process'lerin islemlerinin
+ * 	bitmesini bekliyor. Kendi olusturdugu child processleri -1 adiyla
+ * 	goruyor, boylelikle child processlerin islemlerinin bitimesini bekliyor.
+ * @fn sem_post()	Process'lerin islemleri bittiginde bittigini bildiriyor.
+ * @return void* 
+ */
 void	*control_philos_b(void *arg)
 {
 	t_base	*base;

@@ -6,7 +6,7 @@
 /*   By: gsever <gsever@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:45:18 by gsever            #+#    #+#             */
-/*   Updated: 2022/09/05 20:46:54 by gsever           ###   ########.fr       */
+/*   Updated: 2022/09/20 12:49:36 by gsever           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,8 +190,6 @@
  * 		• Her filozof bir süreç(process) olmalıdır. Ama asıl süreç
  * 			bir filozof olmamalıdır.
  * @fn philosophers
- * @note --> man pthread yaz sonrasinda her pthread_func()'larin aciklamalarini
- * 	philosophers.h'a yaz.
  */
 int	main(int argc, char *argv[])
 {
